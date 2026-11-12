@@ -1,17 +1,21 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 # Load Model
-with open("churn_model.pkl", "rb") as file:
+with open(os.path.join(BASE_DIR, "churn_model.pkl"), "rb") as file:
     model = pickle.load(file)
 
 # Load Scaler
-with open("scaler.pkl", "rb") as file:
+with open(os.path.join(BASE_DIR, "scaler.pkl"), "rb") as file:
     scaler = pickle.load(file)
 
 # Load Feature Names
-with open("feature_names.pkl", "rb") as file:
+with open(os.path.join(BASE_DIR, "feature_names.pkl"), "rb") as file:
     feature_names = pickle.load(file)
 
 st.title("Customer Churn Prediction")
